@@ -1,0 +1,28 @@
+{
+  "name": "team-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJLindsey/Team-profile.git"
+  },
+  "author": "JJlindsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JJLindsey/Team-profile/issues"
+  },
+  "homepage": "https://github.com/JJLindsey/Team-profile#readme",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  }
+}
