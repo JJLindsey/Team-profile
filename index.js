@@ -5,6 +5,8 @@ const fs = require('fs');
 const generateHTML = require('./src/generateHTML.js')
 
 //create question prompts for user input
+
+//===========================================
 const userInput = () => {
     return inquirer.prompt([
         {
@@ -70,7 +72,6 @@ Add a New Team Member
                 console.log('Please enter your role.');
                 return false;
             }
-        }
         },
         
         {
@@ -91,12 +92,6 @@ Add a New Team Member
             default: true
         },
         {
-            type: 'checkbox',
-            name: 'license',
-            message: 'Please choose a license for your read me. Check all that apply.',
-            choices: ['General Public License', 'Apache 2.0', 'MIT license', 'ISC license']
-        },
-        {
             type: 'input',
             name: 'github',
             message: 'Enter your GitHub Username (Required)',
@@ -112,3 +107,30 @@ Add a New Team Member
         
     ]);
 };
+
+// const writeFile = () => {
+    
+// }
+
+// // TODO: Create a function to initialize app
+// function init() {
+
+//     userInput().then((response) => {
+//         console.log(response)
+
+//         const genratedString  = (response);
+
+//         console.log(generatedString)
+
+//         fs.writeFileSync('generateHTML', generatedString)
+
+
+
+//     })
+
+// }
+
+// // Function call to initialize app
+// init();
+
+module.exports = team;
