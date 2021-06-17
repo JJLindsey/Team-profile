@@ -4,6 +4,9 @@ const fs = require('fs');
 
 // import classes
 const Manager = require('./lib/Manager.js')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+
 
 // global variable
 const teamArray = [];
@@ -13,7 +16,7 @@ const teamArray = [];
 // What kind of employee would you like to add 
 // Options: Manager, Engineer, Intern
 
-// For example, the user picked Manager
+// ie ,user picked Manager
 // Ask for Name
 // Ask for Id
 // Ask for Email
@@ -52,6 +55,7 @@ const init = () => {
 
         } else if(answer.employeeType == "Engineer") {
             // call getEnginer
+            getEngineerData();
         }
 
     })
@@ -68,7 +72,7 @@ const getManagerData  = () => {
                 if (managerInput){
                     return true;
                 } else {
-                    console.log('Please enter your mamager\'s name.');
+                    console.log('Please enter your manager\'s name.');
                     return false;
                 }
             }
@@ -106,21 +110,21 @@ const getManagerData  = () => {
 
         console.log(newManager);
 
-        // call promptAdd function
+        // call promptAddEmployee function
     })
 }
 
 // getEngineerData function --> asks for engineer info
 // getInternData function --> asks for intern info
-// promptAdd function
+// promptAdd function add employees
 // generateHTML function ---> use fs.writeFile
 
 
 // writeFile
 // writeFile(filename, data, cb)
 
-// writeFileSync
-// const result = writeFileSync(filename, data)
+fs.writeFileSync()
+    const result = writeFileSync(index.html, data)
 
 
 
