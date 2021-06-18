@@ -11,7 +11,7 @@ const Intern = require('./lib/Intern')
 // global variable
 const teamArray = [];
 
-// const generateHTML = require('./src/generateHTML.js');
+const generateHTML = require('./src/generateHTML.js');
 
 // What kind of employee would you like to add 
 // Options: Manager, Engineer, Intern
@@ -223,9 +223,11 @@ const getInternData  = () => {
 // promptAdd function add employees
 // generateHTML function ---> use fs.writeFile
 
+const generateTeam = generateHTML(response);
+console.log(generateTeam)
 
 fs.writeFileSync()
-    const result = writeFileSync(index.html, data)
+    const result = writeFileSync('generateHTML.js', generateTeam)
 
 
 

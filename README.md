@@ -1,4 +1,4 @@
-### Team Profile Builder
+# Team Profile Builder
 
 ## **Description**
 Build your Team's online profile, incl. Name/Title/ID/Email using Node to generate your HTML
