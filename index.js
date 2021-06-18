@@ -17,7 +17,7 @@ const userInput = () => {
                 if (managerInput){
                     return true;
                 } else {
-                    console.log('Please enter your mamager\'s name.');
+                    console.log('Please enter your manager\'s name.');
                     return false;
                 }
             }
@@ -55,7 +55,7 @@ const teamMembers = teamMemberData => {
 Add a New Team Member
 ======================
 `);
-//if there is np other team members
+//if there is no other team members
     if (!teamMemberData.employee) {
         teamMemberData.employee = [];
     }

@@ -35,7 +35,7 @@ const init = () => {
             type: 'list',
             name: 'employeeType',
             message: 'What type of employee would you like to add?',
-            choices: ['Manager', 'Engineer', 'Intern'],
+            choices: ['Manager', 'Engineer', 'Intern', 'No more employees to add'],
             validate: employeeInput => {
                 if(employeeInput) {
                     return true;
@@ -56,6 +56,11 @@ const init = () => {
         } else if(answer.employeeType == "Engineer") {
             // call getEnginer
             getEngineerData();
+
+        } else if(answer.employeeType == "Intern") {
+            getInternData();
+        } else {
+            //call generateHTML
         }
 
     })
@@ -110,18 +115,114 @@ const getManagerData  = () => {
 
         console.log(newManager);
 
-        // call promptAddEmployee function
+
     })
 }
 
 // getEngineerData function --> asks for engineer info
+const getEngineerData  = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: 'What is your name? (Required)',
+            validate: engInput => {
+                if (engInput){
+                    return true;
+                } else {
+                    console.log('Please enter your name.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Please input your ID (Required)',
+            validate: idInput => {
+                if (idInput){
+                    return true;
+                } else {
+                    console.log('Please provide your employee ID.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address',
+        },
+        {
+            type: 'input',
+            name: 'gitHubUser',
+            message: 'Please enter your GitHub username.',
+            default: true
+        }
+    ]).then((answer) => {
+
+        // create a Engineer object using the Engineer class
+        const newEngineer = new Engineer(answer.engineerName, answer.employeeId, answer.email, answer.gitHubUser)
+
+        teamArray.push(newEngineer);
+
+        console.log(newEngineer);
+    })
+}  
+
 // getInternData function --> asks for intern info
+const getInternData  = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: 'What is your name? (Required)',
+            validate: internInput => {
+                if (internInput){
+                    return true;
+                } else {
+                    console.log('Please enter your name.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Please input your ID (Required)',
+            validate: idInput => {
+                if (idInput){
+                    return true;
+                } else {
+                    console.log('Please provide your employee ID.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address',
+        },
+        {
+            type: 'input',
+            name: 'schoolInput',
+            message: 'Please enter your school/univerity name.',
+            default: true
+        },
+    ]).then((answer) => {
+
+        // create a Manager object using the Manager class
+        const newIntern = new Intern(answer.internName, answer.employeeId, answer.email, answer.schoolInput)
+
+        teamArray.push(newIntern);
+
+        console.log(newIntern);
+    })
+}
 // promptAdd function add employees
 // generateHTML function ---> use fs.writeFile
 
-
-// writeFile
-// writeFile(filename, data, cb)
 
 fs.writeFileSync()
     const result = writeFileSync(index.html, data)
