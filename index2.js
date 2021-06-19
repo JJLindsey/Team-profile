@@ -50,7 +50,7 @@ const init = () => {
         console.log(answer.employeeType)
 
         if(answer.employeeType == "Manager") {
-            // call getManagerDData function
+            // call getManagerData function
             getManagerData();
 
         } else if(answer.employeeType == "Engineer") {
@@ -60,7 +60,11 @@ const init = () => {
         } else if(answer.employeeType == "Intern") {
             getInternData();
         } else {
+            console.log(teamArray)
             //call generateHTML
+            const generateTeam = generateHTML(teamArray);
+            console.log(generateTeam)
+            fs.writeFileSync('index.html', generateTeam)
         }
 
     })
@@ -115,9 +119,17 @@ const getManagerData  = () => {
 
         console.log(newManager);
 
-
+        init()
     })
 }
+
+// promptAdd function add employees
+// const teamMembers = teamMemberData => {
+//     console.log(`
+// ======================
+// Add a New Team Member
+// ======================
+// `);
 
 // getEngineerData function --> asks for engineer info
 const getEngineerData  = () => {
@@ -167,7 +179,10 @@ const getEngineerData  = () => {
         teamArray.push(newEngineer);
 
         console.log(newEngineer);
+        
+        init()
     })
+
 }  
 
 // getInternData function --> asks for intern info
@@ -218,16 +233,14 @@ const getInternData  = () => {
         teamArray.push(newIntern);
 
         console.log(newIntern);
+
+        init()
     })
+
 }
-// promptAdd function add employees
+
 // generateHTML function ---> use fs.writeFile
-
-const generateTeam = generateHTML(response);
-console.log(generateTeam)
-
-fs.writeFileSync()
-    const result = writeFileSync('generateHTML.js', generateTeam)
+//pass dat to html ()
 
 
 

@@ -1,9 +1,9 @@
 const generateCard = employee => {
     return `
         <section class="my-3" id="portfolio">
-        ${employee.name}
             <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
             <div class="flex-row justify-space-between">
+            ${employee.name}
                 <!-- Leaving this empty as we'll dynamically insert project HTML here -->
             </div>
         </section>
@@ -25,7 +25,7 @@ const generateHTML = teamArray => {
     <body>
 
         ${teamArray.map((employee) => {
-            return generateCard(employee);
+            return generateCard(employee)
         })}
         
         <script src="index.js"></script>
@@ -34,4 +34,4 @@ const generateHTML = teamArray => {
 `
 }
 
-module.exports = generateHTML();
+module.exports = generateHTML;
