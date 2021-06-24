@@ -1,7 +1,7 @@
 const generateCard = employee => {
     return `
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="http://tinygraphs.com/labs/isogrids/hexa">class="card-img-top" alt="avatar">
         <div class="card-body">
             <h5 class="card-title">${employee.name}</h5>
             <p class="card-text">${employee.role}</p>
@@ -11,7 +11,7 @@ const generateCard = employee => {
             <li class="list-group-item">${employee.email}</li>
         </ul>
         <div class="card-body">
-            <a href="#" class="card-link">${employee.officNum}</a>
+            <a href="#" class="card-link">${employee.officeNum}</a>
         </div>
     </div>    
         `;
