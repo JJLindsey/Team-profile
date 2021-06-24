@@ -1,14 +1,23 @@
 const generateCard = employee => {
     return `
-        <section class="my-3" id="portfolio">
-            <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-            <div class="flex-row justify-space-between">
-            ${employee.name}
-                <!-- Leaving this empty as we'll dynamically insert project HTML here -->
-            </div>
-        </section>
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${employee.name}</h5>
+            <p class="card-text">${employee.role}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">${employee.id}</li>
+            <li class="list-group-item">${employee.email}</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">${employee.officNum}</a>
+        </div>
+    </div>    
         `;
 };
+
+
 
 const generateHTML = teamArray => {
     return `<!DOCTYPE html>

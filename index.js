@@ -2,7 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generateHTML = require('./src/generateHTML.js')
+const generateHTML = require('./src/generateHTML.js');
+const { STATUS_CODES } = require('http');
 
 //create question prompts for user input
 
@@ -134,3 +135,13 @@ Add a New Team Member
 // init();
 
 module.exports = team;
+
+// htmlgenerate code =
+// <section class="my-3" id="portfolio">
+// <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
+// <div class="flex-row justify-space-between">
+// ${employee.name}
+
+//     <!-- Leaving this empty as we'll dynamically insert project HTML here -->
+// </div>
+// </section>
