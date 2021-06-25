@@ -2,17 +2,80 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+// import classes
+const Manager = require('./lib/Manager.js')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
+
+
+// global variable
+const teamArray = [];
+
 const generateHTML = require('./src/generateHTML.js');
-const { STATUS_CODES } = require('http');
 
-//create question prompts for user input
+// What kind of employee would you like to add 
+// Options: Manager, Engineer, Intern
 
-//===========================================
-const userInput = () => {
-    return inquirer.prompt([
+// ie ,user picked Manager
+// Ask for Name
+// Ask for Id
+// Ask for Email
+// Ask for Officenumber
+
+// Ask if add more employee? Yes/No
+// Yes ---> Goes back to type f employee question
+// No ----> Generate the Team and generate the HTML
+
+
+// functions
+// init function --> prompt for type of employee
+const init = () => {
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'employeeType',
+            message: 'What type of employee would you like to add?',
+            choices: ['Manager', 'Engineer', 'Intern', 'No more employees to add'],
+            validate: employeeInput => {
+                if(employeeInput) {
+                    return true;
+                } else {
+                    console.log('Please choose an employee role.');
+                    return false;
+                }
+            }
+        },
+        
+    ]).then((answer)=>{
+        console.log(answer.employeeType)
+
+        if(answer.employeeType == "Manager") {
+            // call getManagerData function
+            getManagerData();
+
+        } else if(answer.employeeType == "Engineer") {
+            // call getEnginer
+            getEngineerData();
+
+        } else if(answer.employeeType == "Intern") {
+            getInternData();
+        } else {
+            console.log(teamArray)
+            //call generateHTML
+            const generateTeam = generateHTML(teamArray);
+            console.log(generateTeam)
+            fs.writeFileSync('index.html', generateTeam)
+        }
+
+    })
+}
+
+// getManagerData function --> asks for manager info
+const getManagerData  = () => {
+    inquirer.prompt([
         {
             type: 'input',
-            name: 'manager',
+            name: 'managerName',
             message: 'What is your team manager\'s name? (Required)',
             validate: managerInput => {
                 if (managerInput){
@@ -47,101 +110,138 @@ const userInput = () => {
             message: 'Please enter your office number.',
             default: true
         },
-    ])
-};
+    ]).then((answer) => {
 
-const teamMembers = teamMemberData => {
-    console.log(`
-======================
-Add a New Team Member
-======================
-`);
-//if there is no other team members
-    if (!teamMemberData.employee) {
-        teamMemberData.employee = [];
-    }
-    return inquirer.prompt([
-        {    
-            type: 'list',
-            name: 'role',
-            message: 'Please enter your role.(Required)',
-            choices: ['Engineer', 'Intern'],
-            validate: roleInput => {
-            if (roleInput) {
-                return true;
-            } else {
-                console.log('Please enter your role.');
-                return false;
-            }
-        },
-        
+        // create a Manager object using the Manager class
+        const newManager = new Manager(answer.managerName, answer.employeeId, answer.email, answer.officeNum)
+
+        teamArray.push(newManager);
+
+        console.log(newManager);
+
+        init()
+    })
+}
+
+// promptAdd function add employees
+// const teamMembers = teamMemberData => {
+//     console.log(`
+// ======================
+// Add a New Team Member
+// ======================
+// `);
+
+// getEngineerData function --> asks for engineer info
+const getEngineerData  = () => {
+    inquirer.prompt([
         {
             type: 'input',
-            name: 'usage',
-            message: 'Enter usage information.',
-            default: true
-        },
-        {
-            type: 'input',
-            name: 'contribution',
-            message: 'Enter contribution guidelines.',
-            default: true
-        },
-        {   type: 'input',
-            name: 'tests',
-            message: 'Enter testing information.',
-            default: true
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: 'Enter your GitHub Username (Required)',
-            validate: githubInput => {
-                if (githubInput){
+            name: 'engineerName',
+            message: 'What is your name? (Required)',
+            validate: engInput => {
+                if (engInput){
                     return true;
                 } else {
-                    console.log('Please enter your GitHub username.');
+                    console.log('Please enter your name.');
                     return false;
                 }
             }
         },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Please input your ID (Required)',
+            validate: idInput => {
+                if (idInput){
+                    return true;
+                } else {
+                    console.log('Please provide your employee ID.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address',
+        },
+        {
+            type: 'input',
+            name: 'gitHubUser',
+            message: 'Please enter your GitHub username.',
+            default: true
+        }
+    ]).then((answer) => {
+
+        // create a Engineer object using the Engineer class
+        const newEngineer = new Engineer(answer.engineerName, answer.employeeId, answer.email, answer.gitHubUser)
+
+        teamArray.push(newEngineer);
+
+        console.log(newEngineer);
         
-    ]);
-};
+        init()
+    })
 
-// const writeFile = () => {
-    
-// }
+}  
 
-// // TODO: Create a function to initialize app
-// function init() {
+// getInternData function --> asks for intern info
+const getInternData  = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: 'What is your name? (Required)',
+            validate: internInput => {
+                if (internInput){
+                    return true;
+                } else {
+                    console.log('Please enter your name.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'employeeId',
+            message: 'Please input your ID (Required)',
+            validate: idInput => {
+                if (idInput){
+                    return true;
+                } else {
+                    console.log('Please provide your employee ID.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address',
+        },
+        {
+            type: 'input',
+            name: 'schoolInput',
+            message: 'Please enter your school/univerity name.',
+            default: true
+        },
+    ]).then((answer) => {
 
-//     userInput().then((response) => {
-//         console.log(response)
+        // create a Manager object using the Manager class
+        const newIntern = new Intern(answer.internName, answer.employeeId, answer.email, answer.schoolInput)
 
-//         const genratedString  = (response);
+        teamArray.push(newIntern);
 
-//         console.log(generatedString)
+        console.log(newIntern);
 
-//         fs.writeFileSync('generateHTML', generatedString)
+        init()
+    })
+
+}
+
+// generateHTML function ---> use fs.writeFile
+//pass dat to html ()
 
 
 
-//     })
-
-// }
-
-// // Function call to initialize app
-// init();
-
-module.exports = team;
-
-// htmlgenerate code =
-// <section class="my-3" id="portfolio">
-// <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-// <div class="flex-row justify-space-between">
-// ${employee.name}
-
-//     <!-- Leaving this empty as we'll dynamically insert project HTML here -->
-// </div>
-// </section>
+init();
