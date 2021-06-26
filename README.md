@@ -20,7 +20,7 @@ inquirer
 ### **Usage**
 ⏯
 
-![TeamBuildDemo]()
+
 
 
 ### **Technologies Used:**
