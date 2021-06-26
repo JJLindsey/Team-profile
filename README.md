@@ -1,7 +1,7 @@
 # Team Profile Builder
 
 ## **Description**
-Build your Team's online profile, incl. Name/Title/ID/Email using Node to generate your HTML
+This application was created to generate your team's profile based on user input using Node.js. Build your Team's online profile, incl. Name/Title/ID/Email  to generate your HTML.
 
 ## **Table of Contents**
 * [Installation](#installation)
@@ -10,7 +10,6 @@ Build your Team's online profile, incl. Name/Title/ID/Email using Node to genera
 * [Licenses](#licenses)
 * [Badges](#Badges)
 * [Questions](#questions)
-* [Testing](#testing)
 
 ### **Installation**
 npm
@@ -46,9 +45,6 @@ MIT license
 ### *Questions*
 If you have any questions, reach out to me on Git Hub https://github.com/JJLindsey, or send me a message jlindsey010@gmail.com.
 
-
-
-#### *Testing*
 
 
 ©Jennifer Lindsey 2021

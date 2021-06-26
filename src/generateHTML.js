@@ -1,29 +1,29 @@
 const generateCard = employee => {
     //what type of employee 
     // if (employee === "Manager") {
-        
+    //     return 
     // } else {
-        
+    //     (employee === "Engineer")
+    //     return
+    // } else if {
+    //     (employee === "Intern")
+    //     return
     // }
+
     return `
-    <div class="card text-dark bg-info mb-3" style="max-width: 18rem;">
-        <img src="http://tinygraphs.com/labs/isogrids/hexa" class="card-img-top" alt="avatar">
+    <div class="card mb-3" style="max-width: 18rem;">
+        <img src="assets/OrangeAva.png" class="card-img-top" alt="avatar">
         <div class="card-body">
             <h5 class="card-title">${employee.name}</h5>
-            <p class="card-text">${employee.role}</p>
+            <p class="card-text">${employee.getRole()}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${employee.id}</li>
-            <li class="list-group-item">${employee.email}</li>
+            <li class="list-group-item">ID: ${employee.id}</li>
+            <li class="list-group-item">Email: ${employee.email}</li>
         </ul>
-        <div class="card-body">
-            <a href="https://github.com/${employee.gitHubUser}" class="card-link">${employee.officeNum}</a>
-        </div>
-    </div>    
+    </div>
         `;
 };
-
-
 
 
 const generateHTML = teamArray => {
@@ -38,13 +38,24 @@ const generateHTML = teamArray => {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
     </head>
+    
     <body>
+    <header>
+            <nav class="navbar" id="navbar">
+                <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+            </nav>
+    </header>
+    <div class="container">
+        <div class="row justify-content-center" id="employee-cards">
 
         ${teamArray.map((employee) => {
             return generateCard(employee)
-        })}
+        }).join('')}
         
-        <script src="index.js"></script>
+        </div>
+    </div>    
+    
+    <script src="index.js"></script>
     </body>
 </html>
 `

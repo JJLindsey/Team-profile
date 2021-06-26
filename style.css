@@ -1,8 +1,32 @@
+:root {
+    --primary:rgb(22, 59, 114);
+    --secondary:rgb(231, 74, 0);
+    --tertiary:white;
+}
+
+#navbar {
+    background-color: var(--primary);
+    color: var(--tertiary);
+    font-size: 50px;
+}
+.container {
+    margin: 100px auto;
+    justify-content: space-evenly;
+    display: flex;
+    
+}
 .card {
     display:flex;
     flex-direction: column;
 }
 
 .card-body {
+    display: inline;
     padding: 2.5%;
+    background-color: var(--primary);
+    color:var(--tertiary);
+}
+
+.card-img-top {
+    max-width: 35%;
 }
