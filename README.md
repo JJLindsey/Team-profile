@@ -11,6 +11,8 @@ This application was created to generate your team's profile based on user input
 * [Badges](#Badges)
 * [Questions](#questions)
 
+<img src="./assets/TeamProf.png" height=200>
+
 ### **Installation**
 npm
 inquirer

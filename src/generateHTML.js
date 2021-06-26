@@ -19,7 +19,7 @@ const generateCard = employee => {
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${employee.id}</li>
-            <li class="list-group-item">Email: ${employee.email}</li>
+            <li class="list-group-item">Email: <a href="mailto:${employee.email}">${employee.email}</a></li>
         </ul>
     </div>
         `;
