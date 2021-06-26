@@ -20,8 +20,7 @@ inquirer
 ### **Usage**
 ⏯
 
-<img src="./assets/TeamBuildScreen.png" height= 250>
-
+<img src="./assets/TeamBuildScreen.png" height= 250 target>
 
 
 ### **Technologies Used:**
